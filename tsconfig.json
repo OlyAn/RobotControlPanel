@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "app/javascript",
+    "baseUrl": "app/javascript",
     "declaration":false,
     "emitDecoratorMetadata":true,
     "experimentalDecorators":true,

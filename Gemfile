@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'mqtt', :git => 'https://github.com/njh/ruby-mqtt.git'
 gem "haml-rails", "~> 2.0"
+
 gem "react_on_rails", "11.1.4"
 gem 'webpacker', '>= 4.0.x'
 
