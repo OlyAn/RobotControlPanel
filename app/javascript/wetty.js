@@ -27,7 +27,7 @@ if (require.main === module) {
           demand: false,
           description: 'ssh server host',
           type: 'string',
-          default: process.env.SSHHOST || '192.168.0.102',
+          default: process.env.SSHHOST || '192.168.0.101',
         },
         sshport: {
           demand: false,

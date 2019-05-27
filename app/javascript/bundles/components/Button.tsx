@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-export const Button = styled.button`
-  min-width: 200px;
+const Button = styled.button`
+  width: 200px;
   font-weight: bold;
   padding: 10px;
 
@@ -19,3 +19,5 @@ export const Button = styled.button`
     color: ${props => props.theme.colors.main};
   }
 `
+
+export default Button

@@ -4,26 +4,37 @@ import styled from "styled-components"
 const Container = styled.div`
   display: flex;
   align-items: center;
-  height: 500px;
+  max-height: 95vh;
+  width: -webkit-fill-available;
 
-  @media (max-width: 756px) {
-    height: 95vh;
+  @media (min-width: 380px) {
+    max-height: 500px;
   }
 `
 
-export const Image = styled.img`
+const Image = styled.img`
   background-color: #eee;
   width: 100%;
+  font-size: 64px;
+  max-width: 400px;
+  text-align: center;
+  color: ${props => props.theme.colors.orange};
 
-  @media (max-width: 756px) {
-    max-width: 400px;
+  @media (min-width: 380px) {
+    font-size: 24px;
+    max-width: unset;
   }
 `
 
-export const CameraStream: React.SFC<{ src: string }> = ({ src }) => {
+const CameraStream: React.SFC<{ src: string }> = ({ src }) => {
   return (
     <Container>
-      <Image src={src} />
+      <Image
+        src={src}
+        alt="Что-то пошло не так. Проверьте, что на мобильном роботе запущен web_video_server."
+      />
     </Container>
   )
 }
+
+export default CameraStream
