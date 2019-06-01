@@ -14,7 +14,22 @@ export const Normalize = createGlobalStyle`
 	  line-height: 1.15;
 	  margin: 0;
 	}
-    
+
+  a {
+    color: ${theme.colors.mainAlt};
+  }
+
+  a:hover {
+    color: ${theme.colors.outline};
+  }
+
+  a:visited {
+    color: ${theme.colors.mainAlt};
+  }
+
+  input {
+    padding: 10px;
+  }
 
 	button, input, select {
 	  text-transform: none;

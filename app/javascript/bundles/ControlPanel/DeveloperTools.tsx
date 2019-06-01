@@ -4,12 +4,14 @@ import styled from "styled-components"
 const Container = styled.div``
 
 const Icon = styled.img`
-  position: absolute;
-  top: 150px;
-  right: 90px;
-  width: 70px;
+  width: 200px;
+  margin: 0 auto;
 
-  @media (max-width: 380px) {
+  @media (min-width: 948px) {
+    position: absolute;
+    top: 150px;
+    right: 90px;
+    width: 70px;
   }
 `
 

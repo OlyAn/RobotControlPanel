@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import BaseButton from "./Button"
+import BaseButton from "../components/Button"
 
 const Container = styled.div`
   display: flex;
@@ -10,11 +10,11 @@ const Container = styled.div`
   text-align: center;
   box-sizing: border-box;
   background-color: #d4dadc;
-  height: 95vh;
+  height: 70vh;
   padding-top: 20px;
   padding-bottom: 20px;
 
-  @media (min-width: 380px) {
+  @media (min-width: 948px) {
     height: 500px;
   }
 `

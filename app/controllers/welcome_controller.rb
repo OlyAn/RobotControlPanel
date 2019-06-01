@@ -2,10 +2,20 @@
 
 class WelcomeController < ApplicationController
 	def index
-    @hello_world_props = { name: "Stranger" }
-    # uri = URI("http://192.168.0.102:8080/snapshot?topic=/raspicam_node/image")
-    # a = Net::HTTP.get_response(uri) 
+    @user_props = current_user&.attributes&.slice('first_name', 'last_name', 'email')
+    @robot_props = {
+      name: 'RoboCake',
+      ip: "192.168.137.118"
+    }
+  end
 
-    # binding.pry
+  def update_user
+    current_user.update_attributes!(user_params)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :email)
   end
 end

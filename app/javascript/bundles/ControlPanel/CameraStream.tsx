@@ -4,10 +4,10 @@ import styled from "styled-components"
 const Container = styled.div`
   display: flex;
   align-items: center;
-  max-height: 95vh;
+  max-height: 70vh;
   width: -webkit-fill-available;
 
-  @media (min-width: 380px) {
+  @media (min-width: 948px) {
     max-height: 500px;
   }
 `
@@ -15,13 +15,12 @@ const Container = styled.div`
 const Image = styled.img`
   background-color: #eee;
   width: 100%;
-  font-size: 64px;
+  font-size: 24px;
   max-width: 400px;
   text-align: center;
   color: ${props => props.theme.colors.orange};
 
-  @media (min-width: 380px) {
-    font-size: 24px;
+  @media (min-width: 948px) {
     max-width: unset;
   }
 `
