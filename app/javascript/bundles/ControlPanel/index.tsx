@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { default as BaseSlider } from "react-slick"
 
@@ -7,7 +7,8 @@ import Button from "../components/Button"
 import CameraStream from "./CameraStream"
 import SensorsPanel from "./SensorsPanel"
 import DeveloperTools from "./DeveloperTools"
-import { Robot } from "../App"
+import Map from "./Map"
+import { Robot, Twist } from "../App"
 
 const Slider = styled(BaseSlider)`
   .slick-dots {
@@ -47,11 +48,34 @@ const ButtonContainer = styled.div`
   height: 10%;
 `
 
+const MapContainer = styled.div`
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  z-index: 11;
+  width: 70%;
+  background-color: ${props => props.theme.colors.silver};
+  border: 5px solid ${props => props.theme.colors.gunmetal};
+`
+
+const GreyedOutBackground = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.25;
+  background-color: ${props => props.theme.colors.main};
+  z-index: 10;
+`
+
 interface Props {
   robot: Robot
+  ride: (value: Twist) => void
 }
 
 function ControlPanel(props: Props) {
+  const [isMapOpen, setIsMapOpen] = useState(false)
   const ROBOT_IP = props.robot.ip
   const sliderSettings = {
     dots: true,
@@ -61,16 +85,26 @@ function ControlPanel(props: Props) {
     adaptiveHeight: true
   }
 
-  const src = `http://${ROBOT_IP}:8080/stream?topic=/usb_cam/image_raw`
+  const src = `http://${ROBOT_IP}:8080/stream?topic=/raspicam_node/image`
 
   return (
     <>
+      {isMapOpen && (
+        <>
+          <GreyedOutBackground />
+          <MapContainer>
+            <Map close={() => setIsMapOpen(false)} />
+          </MapContainer>
+        </>
+      )}
+
       <MobileView>
         <Slider {...sliderSettings}>
           <LeftPanel>
             <CameraStream src={src} />
           </LeftPanel>
-          <SensorsPanel />
+          <SensorsPanel ride={props.ride} />
+          <Map close={() => {}} />
           <DeveloperTools />
         </Slider>
       </MobileView>
@@ -80,11 +114,11 @@ function ControlPanel(props: Props) {
           <LeftPanel>
             <CameraStream src={src} />
             <ButtonContainer>
-              <Button>Открыть карту</Button>
+              <Button onClick={() => setIsMapOpen(true)}>Открыть карту</Button>
             </ButtonContainer>
           </LeftPanel>
 
-          <SensorsPanel />
+          <SensorsPanel ride={props.ride} />
           <DeveloperTools />
         </Grid>
       </BrowserView>

@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 const Button = styled.button`
   width: 200px;
-  font-weight: bold;
   padding: 10px;
 
   border: 2px solid;
@@ -11,12 +10,17 @@ const Button = styled.button`
   border-color: ${props => props.theme.colors.mainAlt};
   color: ${props => props.theme.colors.mainAlt};
 
-  transition: color, border-color, background-color 0.2s;
+  transition: background-color, border-color, color 0.2s;
 
-  :hover {
+  &:hover(not[disabled]) {
     background-color: ${props => props.theme.colors.mainAlt};
     border-color: ${props => props.theme.colors.main};
     color: ${props => props.theme.colors.main};
+  }
+
+  &[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 `
 

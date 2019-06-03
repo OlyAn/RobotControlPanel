@@ -20,7 +20,7 @@ export const Normalize = createGlobalStyle`
   }
 
   a:hover {
-    color: ${theme.colors.outline};
+    color: white;
   }
 
   a:visited {

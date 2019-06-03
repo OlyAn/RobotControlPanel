@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     @user_props = current_user&.attributes&.slice('first_name', 'last_name', 'email')
     @robot_props = {
       name: 'RoboCake',
-      ip: "192.168.137.118"
+      ip: "192.168.1.233"
     }
   end
 
